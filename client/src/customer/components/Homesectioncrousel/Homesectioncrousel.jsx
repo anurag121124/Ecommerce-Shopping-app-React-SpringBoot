@@ -1,7 +1,6 @@
 import React from 'react';
 import HomeCarousel from '../HomeCarousel/HomeCarousel';
-import ProductCard from '../HomeSectionCard/HomeSectionCard';
-import Carousel from "react-multi-carousel";
+import HomeSectionCard from '../HomeSectionCard/HomeSectionCard'; // Corrected component name
 import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
@@ -44,13 +43,10 @@ const Homesectioncrousel = () => {
 
   return (
     <div>
-        <HomeCarousel />
-        <Carousel responsive={responsive}>
-
-        {duplicatedProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </Carousel>
+      <HomeCarousel />
+      <div >
+        <HomeSectionCard products={duplicatedProducts} /> {/* Corrected component name */}
+      </div>
     </div>
   );
 };
