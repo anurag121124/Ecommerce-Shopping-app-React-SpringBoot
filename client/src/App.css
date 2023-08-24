@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+.lg\:h-80 {
+  height: 20rem;
+  box-shadow: antiquewhite;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: white;
+}
+.lg\:h-80:hover {
+background-color: none;
+}
+
+.product-card.cursor-pointer.flex.flex-col.items-center.bg-white.rounded-lg.shadow-lg.overflow-hidden.w-\[15rem\].mx-3 {
+  margin-left: 100px;
+  width: 231px;
+}
+li.react-multi-carousel-item {
+  width: 200px !important;
+  margin-left: 105px;
+}
+
+
+
