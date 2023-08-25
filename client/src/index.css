@@ -18,10 +18,16 @@ code {
   font-size: 22px;
   line-height: 1;
   opacity: .75;
-  color: black;
+  color: black !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* .max-w-screen-xl {
+  max-width: 1231px;
+  margin-bottom: 61px;
+  margin-top: 23px;
+} */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

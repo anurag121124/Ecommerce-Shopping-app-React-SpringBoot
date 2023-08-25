@@ -56,13 +56,33 @@ li.react-multi-carousel-item {
 }
 .slick-prev:before, .slick-next:before {
   font-family: 'slick';
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
   opacity: .75;
   color: black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+img.object-cover.object-top.w-full.h-25.imageclass {
+  height: 250px;
+}
+/* .sc-grXZZQ.dXkvay {
+  width: 80% !important;
+} */
 
+.max-w-screen-xl {
+  max-width: 1231px;
+  margin-bottom: 61px;
+  margin-top: 23px;
+}
+.dXkvay {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 41%);
+  transition: transform 0.3s ease,box-shadow 0.3s ease;
+  margin: 25px 6px !important;
+  width: 85%; 
+}
 
 

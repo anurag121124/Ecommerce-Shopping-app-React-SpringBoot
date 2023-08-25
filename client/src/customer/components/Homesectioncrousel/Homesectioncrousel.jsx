@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 import HomeCarousel from '../HomeCarousel/HomeCarousel';
 import HomeSectionCard from '../HomeSectionCard/HomeSectionCard'; // Corrected component name
 import "react-multi-carousel/lib/styles.css";
@@ -40,12 +40,23 @@ const Homesectioncrousel = () => {
     ...productData[0], // Assuming you want to duplicate the first product
     id: index + 1,
   }));
+  const collections = ["Men's Collection", "Women'Collection", "Kids Collection"];
 
   return (
     <div>
       <HomeCarousel />
       <div >
-        <HomeSectionCard products={duplicatedProducts} /> {/* Corrected component name */}
+        <div>
+        {collections.map((collectionTitle, index) => (
+          <HomeSectionCard key={index} products={duplicatedProducts} collectionTitle={collectionTitle} />
+        ))}
+      </div>
+      <div>
+        {collections.map((collectionTitle, index) => (
+          <HomeSectionCard key={index} products={duplicatedProducts} collectionTitle={collectionTitle} />
+        ))}
+      </div>
+
       </div>
     </div>
   );

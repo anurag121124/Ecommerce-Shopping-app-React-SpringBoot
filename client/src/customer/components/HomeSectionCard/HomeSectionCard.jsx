@@ -18,27 +18,53 @@ const ProductCardWrapper = styled.div`
   }
 `;
 
-const ProductCard = ({ products }) => {
+const ProductCard = ({ products,collectionTitle }) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4, // Show 4 products at once
     slidesToScroll: 1,
-
+    responsive: [
+      {
+        breakpoint: 3000, // superLargeDesktop
+        settings: {
+          slidesToShow: 5
+        }
+      },
+      {
+        breakpoint: 1024, // desktop
+        settings: {
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 464, // tablet
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 0, // mobile
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
   };
 
   return (
+    
     <div className="max-w-screen-xl mx-auto mt-2" style={{ alignItems: 'flex-start' }}>
+    <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>{collectionTitle}</h2>
       <Slider {...settings}>
         {products.map((product, index) => (
           <div key={index} className="mx-1">
             <ProductCardWrapper>
-              <img className="object-cover object-top w-full h-30 imageclass" src={product.imageUrl} alt={product.title} />
+              <img className="object-cover object-top w-full h-25 imageclass" src={product.imageUrl} alt={product.title} />
 
               <h3 className="text-lg font-semibold text-gray-800">{product.title}</h3>
-              <p className="mt-1 text-sm text-gray-600">{product.description}</p>
-              <div className="mt-2 text-gray-900 font-semibold">${product.price.toFixed(2)}</div>
+              <p className=" text-sm text-gray-600">{product.description}</p>
+              <div className="mt-1 text-gray-900 font-semibold">${product.price.toFixed(2)}</div>
             </ProductCardWrapper>
           </div>
         ))}
