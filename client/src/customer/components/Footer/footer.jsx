@@ -30,7 +30,7 @@ const Footer = () => {
             <div key={key} className="w-full">
               <Typography
                 variant="small"
-                color="blue-gray"
+                color="white"
                 className="mb-4 font-bold uppercase opacity-50"
               >
                 {title}
@@ -40,7 +40,7 @@ const Footer = () => {
                   <Typography
                     key={key}
                     as="li"
-                    color="blue-gray"
+                    color="white"
                     className="font-normal"
                   >
                     <a
@@ -55,16 +55,16 @@ const Footer = () => {
             </div>
           ))}
         </div>
-        <div className="flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
+        <div className="flex w-full flex-col items-center justify-center border-t border-white-50 py-4 md:flex-row md:justify-between">
           <Typography
             variant="small"
-            className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
+            className="mb-4 text-center font-normal text-white-900 md:mb-0"
           >
             &copy; {currentYear}{" "}
             <a href="https://material-tailwind.com/">Material Tailwind</a>. All
             Rights Reserved.
           </Typography>
-          <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
+          <div className="flex gap-4 text-white-900 sm:justify-center">
             <Typography
               as="a"
               href="#"
