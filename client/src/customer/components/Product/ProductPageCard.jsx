@@ -5,7 +5,7 @@ import { productData } from '../../../data/mens_kurta';
 const ProductPageCard = ({ product }) => {
   return (
     <div className='productcard w-[13rem] m-3 transition-all cursor-pointer'>
-      <div className='h-[20rem]'>
+      <div className='h-[16rem]'>
         <img className='h-full w-full object-cover object-left-top' src={product.imageUrl} alt="" />
       </div>
       <div className='textpart bg-white p-3'>
