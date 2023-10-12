@@ -1,7 +1,10 @@
-  import React from 'react';
+import React from 'react';
 import HomeCarousel from '../HomeCarousel/HomeCarousel';
 import HomeSectionCard from '../HomeSectionCard/HomeSectionCard'; // Corrected component name
 import "react-multi-carousel/lib/styles.css";
+import { kurtaPage1 } from '../../../data/Kurta/kurta';
+import { mensPantsPage1 } from '../../../data/pants/men_page1';
+import { mens_kurta } from '../../../data/Men/men_kurta';
 
 const responsive = {
   superLargeDesktop: {
@@ -23,40 +26,23 @@ const responsive = {
 };
 
 const Homesectioncrousel = () => {
-  const productData = [
-    {
-      id: 1,
-      imageUrl: 'https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/r/a/c/-original-imagg44kreytceyz.jpeg?q=70',
-      title: 'NoFilter',
-      description: 'Men Printed Pure Cotton Straight Kurta',
-      price: 39.99,
-    },
-    // Add more product objects
-  ];
+  const kurtaProducts = kurtaPage1; // Assuming kurtaPage1 contains product data
+  const mensPantsProducts = mensPantsPage1;
+  const menKurtaProduct = mens_kurta; // Assuming mensPantsPage1 contains product data
 
-  const numberOfCopies = 8;
-
-  const duplicatedProducts = Array.from({ length: numberOfCopies }, (_, index) => ({
-    ...productData[0], // Assuming you want to duplicate the first product
-    id: index + 1,
-  }));
-  const collections = ["Men's Collection", "Women'Collection", "Kids Collection"];
+  const collections = ["Men's Collection", "Women's Collection"];
 
   return (
     <div>
-      <HomeCarousel />
-      <div >
-        <div>
-        {collections.map((collectionTitle, index) => (
-          <HomeSectionCard key={index} products={duplicatedProducts} collectionTitle={collectionTitle} />
-        ))}
-      </div>
+      <HomeCarousel responsive={responsive} />
       <div>
         {collections.map((collectionTitle, index) => (
-          <HomeSectionCard key={index} products={duplicatedProducts} collectionTitle={collectionTitle} />
+          <HomeSectionCard
+            key={index}
+            products={collectionTitle === "Men's Collection" ? menKurtaProduct : kurtaProducts}
+            collectionTitle={collectionTitle}
+          />
         ))}
-      </div>
-
       </div>
     </div>
   );
