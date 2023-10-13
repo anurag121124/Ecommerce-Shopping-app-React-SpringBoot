@@ -4,11 +4,11 @@ const ProductReviewCard = () => {
   return (
     <div>
       <Grid container spacing={2} gap={3}>
-        <Grid item sx={1}>
+        <Grid item xs={1}>
           <Box>
             <Avatar
               classname="textwhite "
-              sx={{ width: 56, height:50, bgcolor: "#9155fd" }}
+              sx={{ width: 56, height:56, bgcolor: "#9155fd" }}
             >
               R
             </Avatar>
@@ -19,14 +19,14 @@ const ProductReviewCard = () => {
         <Grid item xs={9}>
           <div className=" space-y-2 ">
             <div>
-              <p>Raam</p>
-              <p>April 5, 2023</p>
+              <p className="font-semibold text-lg">Raam</p>
+              <p className="opacity-70">April 5, 2023</p>
             </div>
           </div>
-          <Rating value={4.5} name='half-rating'>
+          <Rating value={4.5} name='half-rating' readOnly precision={.5}>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
 
-          </Rating>
+          </Rating >
           <p>Nice Product, I love this shirt</p>
         </Grid>
       </Grid>

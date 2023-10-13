@@ -28,6 +28,7 @@ code {
   margin-bottom: 61px;
   margin-top: 23px;
 } */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
