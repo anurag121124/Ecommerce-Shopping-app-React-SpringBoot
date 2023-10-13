@@ -1,8 +1,10 @@
-
 import { useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
-import { Button,Rating } from "@mui/material";
+import { Button, Rating } from "@mui/material";
+import Grid from '@mui/system/Unstable_Grid/Grid'
+import ProductReviewCard from "./ProductReviewCard";
+
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -36,7 +38,6 @@ const product = {
     { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
   ],
   sizes: [
-
     { name: "S", inStock: true },
     { name: "M", inStock: true },
     { name: "L", inStock: true },
@@ -141,30 +142,26 @@ export default function Productdetails() {
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
               <div className="flex space-x-5 items-center text-lg lg:text-xl text-gray-900 mt-6 ">
-                <p className='font-semibold'>$99</p>
-                <p className='line-through opacity-50' >$1999</p>
-              <p className='text-green-600 font-semibold'>70%</p>
-              
+                <p className="font-semibold">$99</p>
+                <p className="line-through opacity-50">$1999</p>
+                <p className="text-green-600 font-semibold">70%</p>
               </div>
               {/* Reviews */}
               <div className="mt-6">
-            <div className=" flex items-center space-x-3">
-            <Rating name="read-only" value={0.5} readOnly />
-            <p className=" opacity-50 text-sm">5460 Ratings</p>
-            <p className=" ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">4898 Reviws</p>
-
-            </div>
-
+                <div className=" flex items-center space-x-3">
+                  <Rating name="read-only" value={0.5} readOnly />
+                  <p className=" opacity-50 text-sm">5460 Ratings</p>
+                  <p className=" ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                    4898 Reviws
+                  </p>
+                </div>
               </div>
 
               <form className="mt-10">
-        
-
                 {/* Sizes */}
                 <div className="mt-10">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-medium text-gray-900">Size</h3>
-                   
                   </div>
 
                   <RadioGroup
@@ -236,8 +233,13 @@ export default function Productdetails() {
                   </RadioGroup>
                 </div>
 
-                <Button variant="seconday" color="secondary" sx={{p:"2rem",py:"1rem"}}>Add To Bag</Button>
-
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{ px: "2rem", py: "1rem", bgcolor: "#9155fd" }}
+                >
+                  Add To Bag
+                </Button>
               </form>
             </div>
 
@@ -277,6 +279,24 @@ export default function Productdetails() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* This is for rating and reviews */}
+        <section className="">
+          <h1 className="font-semibold text-lg pb-4">
+            Recent Review and Rating
+          </h1>
+          <div className="border p-12 mb-4 m-5">
+            <Grid container spacing={7}></Grid>
+
+            <Grid item xs={7}>
+              <div className="space-y-5">
+                <ProductReviewCard/>
+
+              </div>
+
+            </Grid>
           </div>
         </section>
       </div>
