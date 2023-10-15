@@ -3,7 +3,9 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
 import { Box, Button, Grid, LinearProgress, Rating } from "@mui/material";
 import ProductReviewCard from "./ProductReviewCard";
-
+import { mens_kurta } from "../../../data/Men/men_kurta";
+import HomeSectionCard from "../HomeSectionCard/HomeSectionCard"; // Corrected component name
+import ProductCard from "../HomeSectionCard/HomeSectionCard";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -54,7 +56,7 @@ const product = {
     'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
 };
 const reviews = { href: "#", average: 4, totalCount: 117 };
-
+const similarProducts = mens_kurta;
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -113,7 +115,6 @@ export default function Productdetails() {
                 alt={product.images[0].alt}
                 className="h-full w-full object-cover object-center"
               />
-              
             </div>
             <div className=" flex flex-wrap space-x-5 justify-center">
               {product.images.map((item) => (
@@ -183,8 +184,8 @@ export default function Productdetails() {
                               size.inStock
                                 ? "cursor-pointer bg-white text-gray-900 shadow-sm"
                                 : "cursor-not-allowed bg-gray-50 text-gray-200",
-                              active ? "ring-2 ring-indigo-500" : "",
-                              "group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                              active ? "ring-1 ring-indigo-500" : "",
+                              "group relative flex items-center justify-center rounded-md border py-1 px-1 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
                             )
                           }
                         >
@@ -244,7 +245,7 @@ export default function Productdetails() {
             </div>
 
             <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
-              {/* Description and details */}
+              {/* Description and details */}``
               <div>
                 <h3 className="sr-only">Description</h3>
 
@@ -254,7 +255,6 @@ export default function Productdetails() {
                   </p>
                 </div>
               </div>
-
               <div className="mt-10">
                 <h3 className="text-sm font-medium text-gray-900">
                   Highlights
@@ -270,7 +270,6 @@ export default function Productdetails() {
                   </ul>
                 </div>
               </div>
-
               <div className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
@@ -283,23 +282,32 @@ export default function Productdetails() {
         </section>
 
         {/* This is for rating and reviews */}
-    <section className=" mb-5">
-      <h1 className="font-semibold text-lg pb-4">Recent Review & Ratings</h1>
+        <section className=" mb-5">
+          <h1 className="font-semibold text-lg pb-4">
+            Recent Review & Ratings
+          </h1>
 
-      <div className="border p-5">
-        <Grid container spacing={7}>
-          <Grid item xs={7}>
-          <div className="space-y-5">
-                {[1,1,1].map((item)=> <ProductReviewCard/>)}
-              </div>
-          </Grid>
+          <div className="border p-5">
+            <Grid container spacing={7}>
+              <Grid item xs={7}>
+                <div className="space-y-5">
+                  {[1, 1, 1].map((item) => (
+                    <ProductReviewCard />
+                  ))}
+                </div>
+              </Grid>
 
-          <Grid item xs={5}>
-            <h1 className="text-xl font-semibold pb-1">Product Ratings</h1>
-            <div className="flex items-center space-x-3 pb-10">
-              <Rating name="read-only" value={4.6} precision={0.5} readOnly />
-              <p className="opacity-60">42807 Ratings</p>
-            </div>
+              <Grid item xs={5}>
+                <h1 className="text-xl font-semibold pb-1">Product Ratings</h1>
+                <div className="flex items-center space-x-3 pb-10">
+                  <Rating
+                    name="read-only"
+                    value={4.6}
+                    precision={0.5}
+                    readOnly
+                  />
+                  <p className="opacity-60">42807 Ratings</p>
+                </div>
                 <Box>
                   <Grid
                     container
@@ -458,12 +466,25 @@ export default function Productdetails() {
                     </Grid>
                   </Grid>
                 </Box>
-                
-            {/* Similar Box elements for other rating categories */}
-          </Grid>
-        </Grid>
-      </div>
-    </section>
+
+                {/* Similar Box elements for other rating categories */}
+              </Grid>
+            </Grid>
+          </div>
+        </section>
+        <section className="pt-10">
+          <h1 className="py-5 text-xl font-bold">Similar Products</h1>
+          <div className="flex flex-wrap space-y-5">
+            {similarProducts ? (
+              <ProductCard
+                products={similarProducts}
+              
+              />
+            ) : (
+              <p>Similar Products is not available.</p>
+            )}
+          </div>
+        </section>
       </div>
     </div>
   );

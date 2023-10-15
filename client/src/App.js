@@ -5,14 +5,17 @@ import Homepage from './customer/Pages/Homepage/Homepage';
 import Footer from './customer/components/Footer/footer.jsx';
 import Product from './customer/components/Product/Product';
 import Productdetails from './customer/components/ProductDetails/Productdetails';
-
+import Cart from './customer/components/Cart/Cart';
+import CartItem from './customer/components/Cart/cartitem';
 function App() {
   return (
    <div className="">
    <Navigation/>
    <div>
   {/* <Product/> */}
-  <Productdetails/>
+  {/* <Productdetails/> */}
+   <Cart/>
+   {/* <CartItem/> */}
     </div>
     <Footer/>
     </div>
