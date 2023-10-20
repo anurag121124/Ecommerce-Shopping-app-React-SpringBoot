@@ -1,4 +1,4 @@
-package com.ecommercespring.ecommerceapp.config;
+package com.ecommercespring.config;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;

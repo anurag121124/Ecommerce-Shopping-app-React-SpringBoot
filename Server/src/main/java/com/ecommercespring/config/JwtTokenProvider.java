@@ -1,4 +1,4 @@
-package com.ecommercespring.ecommerceapp.config;
+package com.ecommercespring.config;
 
 import java.util.Collection;
 import java.util.Date;
@@ -15,9 +15,10 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
+
 @Service
 public class JwtTokenProvider {
-    private SecretKey key=Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
+	private SecretKey key=Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
     
     public String generateToken(Authentication auth ){
 

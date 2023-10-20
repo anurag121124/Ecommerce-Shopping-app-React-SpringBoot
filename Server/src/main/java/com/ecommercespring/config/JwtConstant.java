@@ -1,4 +1,4 @@
-package com.ecommercespring.ecommerceapp.config;
+package com.ecommercespring.config;
 
 public class JwtConstant {
 

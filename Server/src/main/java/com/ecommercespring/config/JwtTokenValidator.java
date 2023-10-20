@@ -1,4 +1,4 @@
-package com.ecommercespring.ecommerceapp.config;
+package com.ecommercespring.config;
 
 import java.awt.RenderingHints.Key;
 import java.io.IOException;
