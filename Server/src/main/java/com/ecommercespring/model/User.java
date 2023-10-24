@@ -1,10 +1,9 @@
 package com.ecommercespring.model;
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.annotation.Generated;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
@@ -24,7 +23,9 @@ public class User {
 
     public User(Long id, String firstName, String lastName, String password, String email, String role, String mobile,
             List<PaymentInformation> paymentInformations, List<Address> address, List<Rating> ratings,
-            List<Review> reviews, LocalDateTime createdAt) {
+            List<Review> reviews, Date
+
+ createdAt) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -69,7 +70,9 @@ public class User {
     private List<Review> reviews = new ArrayList<>();
 
 
-    private LocalDateTime createdAt;
+    private Date
+
+ createdAt;
 
 
     public User(){
@@ -187,12 +190,16 @@ public class User {
     }
 
 
-    public LocalDateTime getCreatedAt() {
+    public Date
+
+ getCreatedAt() {
         return createdAt;
     }
 
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date
+
+ createdAt) {
         this.createdAt = createdAt;
     }
 

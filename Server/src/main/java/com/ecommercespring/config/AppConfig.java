@@ -1,13 +1,11 @@
 package com.ecommercespring.config;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.lang.Nullable;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,45 +20,55 @@ import jakarta.servlet.http.HttpServletRequest;
 @Configuration
 public class AppConfig {
 
-   @Bean
-   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-    http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-            .authorizeHttpRequests(Authorize -> Authorize
-            .requestMatchers("/api/**").authenticated()
-            .anyRequest().permitAll())
-            .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
-            .csrf()
-            .disable()
-            .cors().
-            configurationSource(new CorsConfigurationSource() {
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        @Override
-        public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
-            CorsConfiguration cfg = new CorsConfiguration();
-            cfg.setAllowedOrigins(Arrays.asList("http://localhost:3000/","http://localhost:4200/"));
-            cfg.setAllowedMethods(Collections.singletonList("*"));
-						cfg.setAllowCredentials(true);
-						cfg.setAllowedHeaders(Collections.singletonList("*"));
-						cfg.setExposedHeaders(Arrays.asList("Authorization"));
-						cfg.setMaxAge(3600L);
-						return cfg;
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeHttpRequests(Authorize -> Authorize
+                        .requestMatchers("/api/**").authenticated()
+                        .anyRequest().permitAll()
+                )
+                .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
+                .csrf().disable()
+                .cors().configurationSource(new CorsConfigurationSource() {
 
-            
-        }
-        
-    })
-    .and()
-		.httpBasic()
-		.and()
-		.formLogin();
-		
-		return http.build();
-   }
-   @Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+                    @Override
+                    public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
 
+                        CorsConfiguration cfg = new CorsConfiguration();
+
+                        cfg.setAllowedOrigins(Arrays.asList(
+
+                                        "http://localhost:3000",
+                                        "http://localhost:4000",
+                                        "http://localhost:4200",
+                                        "https://shopwithzosh.vercel.app"
+
+                                )
+                        );
+                        //cfg.setAllowedMethods(Arrays.asList("GET", "POST","DELETE","PUT"));
+                        cfg.setAllowedMethods(Collections.singletonList("*"));
+                        cfg.setAllowCredentials(true);
+                        cfg.setAllowedHeaders(Collections.singletonList("*"));
+                        cfg.setExposedHeaders(Arrays.asList("Authorization"));
+                        cfg.setMaxAge(3600L);
+                        return cfg;
+
+                    }
+                })
+                .and()
+                .httpBasic()
+                .and()
+                .formLogin();
+
+        return http.build();
+
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 }
