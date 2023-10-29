@@ -149,7 +149,7 @@ public class ProductServiceImplemention implements ProductService {
         if (stock !=null){
             of(stock.equals("in_stock")){
                 products=products.stream().filter(p->p.getQuantity()>0).collect(Collectors.toList());
-            }
+            }  
         }
         return null;
     }
