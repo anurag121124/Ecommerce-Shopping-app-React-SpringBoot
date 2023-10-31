@@ -1,5 +1,6 @@
 package com.ecommercespring.service.ServiceImplementation;
 
+import com.ecommercespring.config.JwtTokenProvider;
 import com.ecommercespring.model.User;
 import com.ecommercespring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,12 @@ import java.util.List;
 public class UserServiceImplementation implements UserDetailsService {
 
     private UserRepository userRepository;
+    private JwtTokenProvider jwtTokenProvider;
 
     @Autowired
     public UserServiceImplementation(UserRepository userRepository) {
         this.userRepository = userRepository;
+        this.jwtTokenProvider = jwtTokenProvider;
     }
 
     @Override
