@@ -7,8 +7,8 @@ public interface UserService {
 
 
 
-   public User findUserById(long user_id) ;
+   public User findUserById(long user_id) throws UserException;
    
-   public User finduserProfileByJwt(String jwt);
+   public User finduserProfileByJwt(String jwt) throws UserException;
     
 }

@@ -1,46 +1,55 @@
 package com.ecommercespring.service.ServiceImplementation;
 
+import com.ecommercespring.Exception.UserException;
 import com.ecommercespring.config.JwtTokenProvider;
 import com.ecommercespring.model.User;
 import com.ecommercespring.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import com.ecommercespring.service.UserService;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
-import org.springframework.security.core.GrantedAuthority;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import org.springframework.stereotype.Service;
+
 
 @Service
-public class UserServiceImplementation implements UserDetailsService {
+public class UserServiceImplementation implements UserService {
 
     private UserRepository userRepository;
     private JwtTokenProvider jwtTokenProvider;
 
-    @Autowired
-    public UserServiceImplementation(UserRepository userRepository) {
-        this.userRepository = userRepository;
-        this.jwtTokenProvider = jwtTokenProvider;
+    public UserServiceImplementation(UserRepository userRepository,JwtTokenProvider jwtTokenProvider) {
+
+        this.userRepository=userRepository;
+        this.jwtTokenProvider=jwtTokenProvider;
+
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("User Not Found With Email " + username);
+    public User findUserById(long userId) throws UserException {
+        Optional<User> user=userRepository.findById(userId);
+
+        if(user.isPresent()){
+            return user.get();
         }
-        List<GrantedAuthority>authorities = new ArrayList<>();
-
-        // You should create a UserDetails object with actual user data and authorities
-        return new org.springframework.security.core.userdetails.User(
-                user.getEmail(), // User's username
-                user.getPassword(), // User's password
-                authorities // List of user's authorities
-        );
-    }
+        throw new UserException("user not found with id "+userId);
     }
 
+    @Override
+    public User finduserProfileByJwt(String jwt) throws UserException {
+        System.out.println("user service");
+        String email=jwtTokenProvider.getEmailFromJwtToken(jwt);
+
+        System.out.println("email"+email);
+
+        User user=userRepository.findByEmail(email);
+
+
+
+        if(user==null) {
+            throw new UserException("user not exist with email "+email);
+        }
+        System.out.println("email user"+user.getEmail());
+        return user;
+    }
+
+}
